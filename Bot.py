@@ -1,5 +1,4 @@
 import discord
-import youtube_dl
 from discord.ext import commands
 import asyncio
 import json
@@ -13,10 +12,9 @@ TOKEN = "NTM4MzMxMjgxNDA3MDgyNTA4.DyyPnA.Chl42K27ZlkqRyPH0SU4KCs6tAA"
 client = commands.Bot(command_prefix = ',')
 status = ["Аноним гет рект", "аноним клиент гавно", "швэ"]
 players = {}
-os.chdir(r'C:\Users\Windows 10\Desktop\Bot')
+os.chdir(r'./')
 bypass_list = ['d1ck']
 chat_filter = ["PINEAPPLE", "APPLE", "CHROME", "dick"]
-client.remove_command('help')
 
 async def change_status():
     await client.wait_until_ready()
@@ -96,25 +94,6 @@ async def ping():
 @client.command(pass_context=True)
 async def ban(ctx, user: discord.Member):
     await client.ban(user)
-
-@client.command(pass_context=True)
-async def play(ctx, url):
-    server = ctx.message.server
-    voice_client = client.voice_client_in(server)
-    player = await voice_client.create_ytdl_player(url)
-    players[server.id]
-    player.start()
-
-@client.command(pass_context=True)
-async def join(ctx):
-    channel = ctx.message.author.voice.voice_channel
-    await client.join_voice_channel(channel)
-
-@client.command(pass_context=True)
-async def leave(ctx):
-    server = ctx.message.server
-    voice_client = client.voice_client_in(server)
-    await voice_client.disconnect()
 
 @client.command(pass_context = True)
 async def clear(ctx, amout=100):
