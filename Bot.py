@@ -126,4 +126,4 @@ async def clear(ctx, amout=100):
     await client.say('messages was deleted!')
 
 client.loop.create_task(change_status())
-client.run(TOKEN)
+client.run(os.getenv('TOKEN'))
